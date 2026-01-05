@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Payment</h2>
+
+  <form [formGroup]="PaymentForm" (ngSubmit)="submit()">
+    <div class="grid">
+
+      <div>
+        <label>From Account</label>
+        <input formControlName="fromAccount">
+      </div>
+
+      <div>
+        <label>To Account</label>
+        <input formControlName="toAccount">
+        <small *ngIf="PaymentForm.get('toAccount')?.invalid && PaymentForm.get('toAccount')?.touched">
+          Must be 12–16 digits
+        </small>
+      </div>
+
+      <div>
+        <label>Amount</label>
+        <input formControlName="amount">
+        <small *ngIf="PaymentForm.get('amount')?.invalid && PaymentForm.get('amount')?.touched">
+          Invalid amount
+        </small>
+      </div>
+
+      <div>
+        <label>Remarks</label>
+        <input formControlName="remarks">
+      </div>
+
+    </div>
+
+    <p class="error" *ngIf="apiError">{{ apiError }}</p>
+
+    <button type="submit" [disabled]="PaymentForm.invalid || loading">
+      {{ loading ? 'Processing…' : 'Continue' }}
+    </button>
+  </form>
+</div>

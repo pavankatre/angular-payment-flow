@@ -1,0 +1,32 @@
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.error {
+  color: red;
+}
