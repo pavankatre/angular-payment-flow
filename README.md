@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Payment Flow
+
+- Run the app: `npm install` then `npm start` (or `ng serve`).
+- Navigate to `/payment` to submit a payment and `/summary` to view the confirmation.
+- Implementation notes: uses Reactive Forms with custom validators, Angular routing, and a `PaymentService` to pass data between pages. Remarks default to "No Remarks" when not provided.
