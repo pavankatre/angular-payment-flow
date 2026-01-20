@@ -1,0 +1,348 @@
+.app-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+}
+
+/* Logo Section */
+.logo {
+  flex-shrink: 0;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 15px 0;
+
+    &:hover {
+      color: #4CAF50;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0;
+
+    li {
+      a {
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #4CAF50;
+        }
+
+        &.active {
+          background-color: #4CAF50;
+          color: white;
+          border-bottom-color: #4CAF50;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    &.open {
+      .line1 {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .line2 {
+        opacity: 0;
+      }
+
+      .line3 {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+  }
+}
+
+/* User Profile Section */
+.profile-section {
+  flex-shrink: 0;
+  position: relative;
+  margin-left: 20px;
+
+  .profile-button {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #4CAF50;
+      background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    .profile-avatar {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  /* Profile Dropdown Menu */
+  .profile-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 280px;
+    z-index: 1000;
+    animation: slideDown 0.2s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .profile-header {
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    .profile-avatar-large {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .profile-info {
+      flex: 1;
+
+      .profile-name {
+        margin: 0 0 4px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .profile-email {
+        margin: 0 0 6px 0;
+        font-size: 12px;
+        color: #999;
+      }
+
+      .profile-role {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: #f0f0f0;
+        color: #667eea;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  .profile-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 0;
+  }
+
+  .logout-button {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #c33;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    .logout-icon {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: rgba(204, 51, 51, 0.05);
+      color: #a22;
+    }
+
+    &:active {
+      background-color: rgba(204, 51, 51, 0.1);
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 15px;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    flex-direction: column;
+    background-color: #2c3e50;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    &.open {
+      max-height: 500px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-list {
+      flex-direction: column;
+      width: 100%;
+
+      li a {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .profile-section {
+    margin-left: 10px;
+
+    .profile-button {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+
+    .profile-menu {
+      top: 50px;
+      min-width: 240px;
+    }
+
+    .profile-header {
+      padding: 12px;
+
+      .profile-avatar-large {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 18px;
+  }
+
+  .nav-menu.open {
+    max-height: 400px;
+  }
+
+  .nav-menu .nav-list li a {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,64 @@
+<header class="app-header">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <h1>Payment Service</h1>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-btn" (click)="toggleMenu()">
+      <span class="hamburger" [class.open]="isMenuOpen">
+        <span class="line1"></span>
+        <span class="line2"></span>
+        <span class="line3"></span>
+      </span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" [class.open]="isMenuOpen">
+      <ul class="nav-list">
+        <li>
+          <a routerLink="/payment" routerLinkActive="active" (click)="closeMenu()">
+            Payment
+          </a>
+        </li>
+        <li>
+          <a routerLink="/summary" routerLinkActive="active" (click)="closeMenu()">
+            Summary
+          </a>
+        </li>
+        <li>
+          <a routerLink="/users" routerLinkActive="active" (click)="closeMenu()">
+            Users Dashboard
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- User Profile Section -->
+    <div class="profile-section" *ngIf="isLoggedIn()">
+      <button class="profile-button" (click)="toggleProfileMenu()">
+        <div class="profile-avatar">{{ getAvatarInitial() }}</div>
+      </button>
+
+      <!-- Profile Dropdown Menu -->
+      <div class="profile-menu" *ngIf="isProfileMenuOpen()" (click)="closeProfileMenu()">
+        <div class="profile-header" *ngIf="currentUser()">
+          <div class="profile-avatar-large">{{ getAvatarInitial() }}</div>
+          <div class="profile-info">
+            <h3 class="profile-name">{{ currentUser()?.username }}</h3>
+            <p class="profile-email">{{ currentUser()?.email }}</p>
+            <span class="profile-role">{{ getRoleDisplay() }}</span>
+          </div>
+        </div>
+
+        <div class="profile-divider"></div>
+
+        <button class="logout-button" (click)="logout()">
+          <span class="logout-icon">🚪</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
