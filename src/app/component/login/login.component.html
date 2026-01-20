@@ -1,0 +1,106 @@
+<div class="login-container">
+  <div class="login-box">
+    <div class="login-header">
+      <h1>Login</h1>
+      <p>Payment Service</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <!-- Error Message -->
+      <div *ngIf="errorMessage()" class="error-message">
+        {{ errorMessage() }}
+      </div>
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username" class="form-label">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-input"
+          [class.input-error]="hasError('username', 'required') || hasError('username', 'minlength')"
+          placeholder="Enter your username"
+          [disabled]="isLoading()"
+        />
+        <div class="error-text" *ngIf="hasError('username', 'required')">
+          Username is required
+        </div>
+        <div class="error-text" *ngIf="hasError('username', 'minlength')">
+          Username must be at least 3 characters
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <div class="password-input-group">
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            class="form-input"
+            [class.input-error]="hasError('password', 'required') || hasError('password', 'minlength')"
+            placeholder="Enter your password"
+            [disabled]="isLoading()"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()"
+            [disabled]="isLoading()"
+          >
+            {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
+          </button>
+        </div>
+        <div class="error-text" *ngIf="hasError('password', 'required')">
+          Password is required
+        </div>
+        <div class="error-text" *ngIf="hasError('password', 'minlength')">
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="login-button"
+        [disabled]="loginForm.invalid || isLoading()"
+      >
+        <span *ngIf="!isLoading()">Login</span>
+        <span *ngIf="isLoading()">Logging in...</span>
+      </button>
+    </form>
+
+    <!-- Demo Credentials Info -->
+    <div class="demo-section">
+      <p class="demo-title">Demo Credentials:</p>
+      <div class="demo-buttons">
+        <button
+          type="button"
+          class="demo-button admin"
+          (click)="demoLogin('admin', 'admin123')"
+          [disabled]="isLoading()"
+        >
+          Admin
+        </button>
+        <button
+          type="button"
+          class="demo-button user"
+          (click)="demoLogin('user', 'user123')"
+          [disabled]="isLoading()"
+        >
+          User
+        </button>
+        <button
+          type="button"
+          class="demo-button viewer"
+          (click)="demoLogin('viewer', 'viewer123')"
+          [disabled]="isLoading()"
+        >
+          Viewer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
