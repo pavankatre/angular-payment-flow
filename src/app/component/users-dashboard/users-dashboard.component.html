@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <h1>Users Dashboard</h1>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-section" *ngIf="!loading() && !error()">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search by name or email..."
+      (input)="onSearch($event)"
+      [value]="searchTerm()"
+    />
+  </div>
+
+  <!-- Loading Indicator -->
+  <div class="loading-container" *ngIf="loading()">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-container" *ngIf="error()">
+    <p class="error-message">{{ error() }}</p>
+    <button class="retry-btn" (click)="retryLoad()">Retry</button>
+  </div>
+
+  <!-- Users Table -->
+  <div class="table-container" *ngIf="!loading() && !error() && filteredUsers().length > 0">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th
+            (click)="onSort('name')"
+            [class.sortable]="true"
+            [class.sorted]="isSortedColumn('name')"
+          >
+            Name {{ getSortIndicator('name') }}
+          </th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th
+            (click)="onSort('companyName')"
+            [class.sortable]="true"
+            [class.sorted]="isSortedColumn('companyName')"
+          >
+            Company {{ getSortIndicator('companyName') }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers()" class="user-row">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.company?.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Results -->
+  <div class="no-results" *ngIf="!loading() && !error() && users().length > 0 && filteredUsers().length === 0">
+    <p>No users found matching your search criteria.</p>
+  </div>
+
+  <!-- No Data -->
+  <div class="no-data" *ngIf="!loading() && !error() && users().length === 0">
+    <p>No users available.</p>
+  </div>
+</div>
