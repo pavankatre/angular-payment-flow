@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { PaymentService } from '../../ervices/payment.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-summary',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './summary.component.html',
-  styleUrl: './summary.component.scss'
+  styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent {
-payment = this.service.getPayment();
+  payment = this.service.getPayment();
 
   constructor(private service: PaymentService) {}
 }

@@ -2,5 +2,5 @@
 
 <p><strong>From:</strong> {{ payment.fromAccount }}</p>
 <p><strong>To:</strong> {{ payment.toAccount }}</p>
-<p><strong>Amount:</strong> {{ payment.amount }}</p>
-<p><strong>Remarks:</strong> {{ payment.remarks }}</p>
+<p><strong>Amount:</strong> {{ payment.amount | number:'1.2-2' }}</p>
+<p><strong>Remarks:</strong> {{ payment.remarks || 'No Remarks' }}</p>

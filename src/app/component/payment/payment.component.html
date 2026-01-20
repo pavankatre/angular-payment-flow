@@ -6,28 +6,30 @@
 
       <div>
         <label>From Account</label>
-        <input formControlName="fromAccount">
+        <input formControlName="fromAccount" type="text" inputmode="numeric" pattern="\d*" maxlength="16" minlength="12" readonly>
       </div>
 
       <div>
         <label>To Account</label>
-        <input formControlName="toAccount">
-        <small *ngIf="PaymentForm.get('toAccount')?.invalid && PaymentForm.get('toAccount')?.touched">
-          Must be 12–16 digits
+        <input formControlName="toAccount" type="text" inputmode="numeric" pattern="\d*" maxlength="16" minlength="12">
+        <small *ngIf="PaymentForm.get('toAccount')?.touched && PaymentForm.get('toAccount')?.errors">
+          <span *ngIf="PaymentForm.get('toAccount')?.errors?.['required']">To account is required.</span>
+          <span *ngIf="PaymentForm.get('toAccount')?.errors?.['pattern']">Account must be 12–16 digits.</span>
         </small>
       </div>
 
       <div>
         <label>Amount</label>
-        <input formControlName="amount">
-        <small *ngIf="PaymentForm.get('amount')?.invalid && PaymentForm.get('amount')?.touched">
-          Invalid amount
+        <input formControlName="amount" type="text" inputmode="decimal" pattern="^\d{1,8}(\.\d{1,2})?$" placeholder="0.00">
+        <small *ngIf="PaymentForm.get('amount')?.touched && PaymentForm.get('amount')?.errors">
+          <span *ngIf="PaymentForm.get('amount')?.errors?.['required']">Amount is required.</span>
+          <span *ngIf="PaymentForm.get('amount')?.errors?.['pattern']">Invalid amount — up to 8 digits and 2 decimals.</span>
         </small>
       </div>
 
       <div>
         <label>Remarks</label>
-        <input formControlName="remarks">
+        <input formControlName="remarks" type="text" maxlength="200" placeholder="Optional">
       </div>
 
     </div>

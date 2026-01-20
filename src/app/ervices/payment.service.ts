@@ -7,24 +7,6 @@ import { Payment } from '../models/payment.model';
 })
 export class PaymentService {
 
-  // constructor() { }
-
-
-
-
-
-
-
-
-
-// import { Injectable, signal } from '@angular/core';
-// import { Payment } from '../models/payment.model';
-// import { Observable, of, throwError } from 'rxjs';
-// import { delay } from 'rxjs/operators';
-
-// @Injectable({ providedIn: 'root' })
-// export class PaymentService {
-
   private paymentSignal = signal<Payment | null>(null);
 
   submitPayment(data: Payment): Observable<Payment> {

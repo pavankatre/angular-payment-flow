@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './payment.component.html',
-  styleUrl: './payment.component.scss'
+  styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent {
 
